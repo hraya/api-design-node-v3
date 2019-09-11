@@ -23,7 +23,26 @@ router.get('/me', (req, res) => {
   res.send({ me: 'hello' })
 })
 
-app.router('/api', router)
+const routes = [
+  'get /cat',
+  'get /cat/:id',
+  'post /cat',
+  'put/cat/:id',
+  'delete /cat/:id'
+]
+
+router
+  .route('/cat')
+  .get()
+  .post()
+
+router
+  .route('/cat/:id')
+  .get()
+  .put()
+  .delete()
+
+app.use('/api', router)
 
 app.get('/data', (req, res) => {
   res.send({ data: [1, 2, 3] })
